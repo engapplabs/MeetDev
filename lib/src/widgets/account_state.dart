@@ -8,21 +8,6 @@ class AccountState extends StatelessWidget {
 
   AccountState(this.user);
 
-  List<Widget> getOrganizations() {
-    List<Widget> organizationIcons = [];
-    for (var organization in user.organizations) {
-      organizationIcons.add(new Padding(
-        padding: new EdgeInsets.all(10.0),
-        child: new Image(
-          image: new NetworkImage(organization.avartarUrl),
-          width: 35.0,
-          height: 35.0,
-        ),
-      ));
-    }
-    return organizationIcons;
-  }
-
   Widget build(context) {
     return new Scaffold(
       body: new Column(
