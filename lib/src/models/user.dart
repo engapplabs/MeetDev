@@ -20,4 +20,8 @@ class User {
     bio = userState["bio"];
     blog = userState["blog"];
   }
+
+  String toString() {
+    return "id: $id, name: $name, bio: $bio";
+  }
 }
