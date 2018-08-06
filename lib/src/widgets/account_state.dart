@@ -57,7 +57,7 @@ class AccountState extends StatelessWidget {
           ),
           new Padding(
             padding: new EdgeInsets.only(bottom: 10.0),
-            child: new Text(user.blog),
+            child: user.blog != null ? Text(user.blog) : new Text(""), 
           ),
           new OrganizationIconsList(user.organizations),
         ],
