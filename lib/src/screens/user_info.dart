@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "../models/user.dart";
+import "../widgets/account_state.dart";
 
 class UserInfo extends StatelessWidget {
 
@@ -12,22 +13,7 @@ class UserInfo extends StatelessWidget {
     return new Scaffold(
       body: new Container(
         margin: new EdgeInsets.all(10.0),
-        child: new Column(
-          children: <Widget>[
-            new Padding(
-              padding: new EdgeInsets.only(bottom: 10.0),
-              child: new Image.network(user.avatarUrl),
-            ),
-             new Padding(
-              padding: new EdgeInsets.only(bottom: 10.0),
-              child: new Text(user.name),
-            ),
-             new Padding(
-              padding: new EdgeInsets.only(bottom: 10.0),
-              child: new Text(user.login),
-            ),
-          ],
-        ),
+        child: new AccountState(user)
       ),
     );
   }
