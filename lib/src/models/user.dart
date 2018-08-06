@@ -13,7 +13,7 @@ class User {
   User.fromJSON(userState) {
     id = userState["id"];
     login = userState["login"];
-    avatarUrl = userState["avatarUrl"];
+    avatarUrl = userState["avatar_url"];
     name = userState["name"];
     company = userState["company"];
     location = userState["location"];
