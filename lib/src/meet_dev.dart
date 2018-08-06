@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "widgets/home.dart";
-import "widgets/user_info.dart";
+import "screens/home.dart";
+import "screens/user_info.dart";
 
 class MeetDev extends StatelessWidget {
 
