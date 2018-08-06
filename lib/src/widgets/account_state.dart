@@ -9,6 +9,21 @@ class AccountState extends StatelessWidget {
 
   AccountState(this.user);
 
+  List<Widget> getOrganizations() {
+    List<Widget> organizationIcons = [];
+    for (var organization in user.organizations) {
+      organizationIcons.add(new Padding(
+        padding: new EdgeInsets.all(10.0),
+        child: new Image(
+          image: new NetworkImage(organization.avartarUrl),
+          width: 35.0,
+          height: 35.0,
+        ),
+      ));
+    }
+    return organizationIcons;
+  }
+
   Widget build(context) {
 
     return new Scaffold(
@@ -47,13 +62,9 @@ class AccountState extends StatelessWidget {
             child: new Text(user.blog),
           ),
           new Row(
-            children: <Widget>[
-              new Image(
-                height: 30.0,
-                width: 30.0,
-                image: NetworkImage(user.organizations[0].avartarUrl)
-              )
-            ],              
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: getOrganizations()              
           ),
         ],
       ),
