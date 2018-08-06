@@ -42,9 +42,9 @@ class HomeState extends State<Home> {
       formKey.currentState.save();
       var givenInfoUser = await UserSearcherService().getUserInfo(_userName);
       final user = new User.fromJSON(givenInfoUser);
-      var organizationsRequest = await get("https://api.github.com/users/${user.login}/orgs");
+      var organizationsRequest = await UserSearcherService().getOrganizationsInfo(_userName);
       List<Organization> organizations = []; 
-      for (var organizationJson in json.decode(organizationsRequest.body)) {
+      for (var organizationJson in organizationsRequest) {
         organizations.add(new Organization.fromJson(organizationJson));
       }
       user.setOrganizations(organizations);
