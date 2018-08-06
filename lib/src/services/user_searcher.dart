@@ -20,4 +20,9 @@ class UserSearcherService {
     return json.decode(response.body);
   }
 
+  getOrganizationsInfo(String userName) async {
+    var response = await get("https://api.github.com/users/${userName}/orgs");
+    return json.decode(response.body);
+  }
+
 }
