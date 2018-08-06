@@ -4,6 +4,7 @@ import "../services/user_searcher.dart";
 import "../models/user.dart";
 import "package:http/http.dart";
 import "dart:convert";
+import "../models/organization.dart";
 
 class Home extends StatefulWidget {
 
@@ -36,16 +37,24 @@ class HomeState extends State<Home> {
       );
   }
 
+  getUserInfo() async {
+    if(formKey.currentState.validate()) {
+      formKey.currentState.save();
+      var givenInfoUser = await UserSearcherService().getUserInfo(_userName);
+      final user = new User.fromJSON(givenInfoUser);
+      var organizationsRequest = await get("https://api.github.com/users/${user.login}/orgs");
+      List<Organization> organizations = []; 
+      for (var organizationJson in json.decode(organizationsRequest.body)) {
+        organizations.add(new Organization.fromJson(organizationJson));
+      }
+      user.setOrganizations(organizations);
+      Navigator.push(context, MaterialPageRoute(builder: (context) => new UserInfo(user)));
+    }
+  }
+
   Widget getSearchButton() {
     return new RaisedButton(
-      onPressed: () async {
-        if(formKey.currentState.validate()) {
-          formKey.currentState.save();
-          var givenInfoUser = await UserSearcherService().getUserInfo(_userName);
-          final user = new User.fromJSON(givenInfoUser);
-          Navigator.push(context, MaterialPageRoute(builder: (context) => new UserInfo(user)));
-        }
-      },
+      onPressed: getUserInfo,
       child: new Text("Search"),
     );
   }

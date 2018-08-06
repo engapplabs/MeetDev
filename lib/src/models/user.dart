@@ -1,3 +1,5 @@
+import "./organization.dart";
+
 class User {
   int id;
   String login;
@@ -7,6 +9,8 @@ class User {
   String blog;
   String location;
   String bio; 
+  List<Organization> organizations;
+
 
   User(id, login, avaterUrl, name, company, blog, location, bio);
 
@@ -19,6 +23,10 @@ class User {
     location = userState["location"];
     bio = userState["bio"];
     blog = userState["blog"];
+  }
+
+  void setOrganizations(List<Organization> organizations) {
+    this.organizations = organizations;
   }
 
   String toString() {
