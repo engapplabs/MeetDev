@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "../models/user.dart";
-import "../models/organization.dart";
-import "package:http/http.dart";
+import "./organization_icons_list.dart";
 
 class AccountState extends StatelessWidget {
 
@@ -25,7 +24,6 @@ class AccountState extends StatelessWidget {
   }
 
   Widget build(context) {
-
     return new Scaffold(
       body: new Column(
         children: <Widget>[
@@ -61,11 +59,7 @@ class AccountState extends StatelessWidget {
             padding: new EdgeInsets.only(bottom: 10.0),
             child: new Text(user.blog),
           ),
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: getOrganizations()              
-          ),
+          new OrganizationIconsList(user.organizations),
         ],
       ),
       floatingActionButton: new FloatingActionButton(
