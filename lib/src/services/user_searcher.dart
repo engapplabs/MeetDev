@@ -3,8 +3,6 @@ import "package:http/http.dart";
 
 class UserSearcherService {
 
-  final String _API_ENDPOINT = "http://api.github.com/users/";
-
   static final UserSearcherService _INSTANCE = new UserSearcherService._internal();
 
   factory UserSearcherService() {
@@ -16,12 +14,17 @@ class UserSearcherService {
   }
 
   getUserInfo(String userName) async {
-    var response = await get(_API_ENDPOINT + userName);
+    var response = await get("http://api.github.com/users/$userName");
     return json.decode(response.body);
   }
 
   getOrganizationsInfo(String userName) async {
     var response = await get("https://api.github.com/users/${userName}/orgs");
+    return json.decode(response.body);
+  }
+
+  getRepositoriesInfo(String userName) async {
+    var response = await get("https://api.github.com/users/${userName}/repos");
     return json.decode(response.body);
   }
 

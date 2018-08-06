@@ -1,4 +1,5 @@
 import "./organization.dart";
+import "./repository.dart";
 
 class User {
   int id;
@@ -10,6 +11,7 @@ class User {
   String location;
   String bio; 
   List<Organization> organizations;
+  List<Repository> repositories;
 
 
   User(id, login, avaterUrl, name, company, blog, location, bio);
@@ -27,6 +29,10 @@ class User {
 
   void setOrganizations(List<Organization> organizations) {
     this.organizations = organizations;
+  }
+
+  void setRepositories(List<Repository> repositories) {
+    this.repositories = repositories;
   }
 
   String toString() {
