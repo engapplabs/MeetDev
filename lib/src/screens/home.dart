@@ -1,10 +1,6 @@
 import "package:flutter/material.dart";
 import "user_info.dart";
-import "../services/user_searcher.dart";
-import "../models/user.dart";
-import "package:http/http.dart";
-import "dart:convert";
-import "../models/organization.dart";
+import "../services/user_info_retriever.dart";
 
 class Home extends StatefulWidget {
 
@@ -40,14 +36,7 @@ class HomeState extends State<Home> {
   getUserInfo() async {
     if(formKey.currentState.validate()) {
       formKey.currentState.save();
-      var givenInfoUser = await UserSearcherService().getUserInfo(_userName);
-      final user = new User.fromJSON(givenInfoUser);
-      var organizationsRequest = await UserSearcherService().getOrganizationsInfo(_userName);
-      List<Organization> organizations = []; 
-      for (var organizationJson in organizationsRequest) {
-        organizations.add(new Organization.fromJson(organizationJson));
-      }
-      user.setOrganizations(organizations);
+      final user = await UserInfoRetriever().retrieveUserInfo(_userName);
       Navigator.push(context, MaterialPageRoute(builder: (context) => new UserInfo(user)));
     }
   }
