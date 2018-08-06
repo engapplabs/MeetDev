@@ -6,7 +6,7 @@ class MeetDev extends StatelessWidget {
 
   final screenRoutes = <String, WidgetBuilder> {
     Home.TAG: (context) => Home(),
-    UserInfo.TAG: (context) => UserInfo(),
+    UserInfo.TAG: (context) => UserInfo(null),
   };
 
   Widget build(context) {
