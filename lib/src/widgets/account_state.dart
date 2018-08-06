@@ -37,23 +37,23 @@ class AccountState extends StatelessWidget {
           ),
           new Padding(
             padding: new EdgeInsets.only(bottom: 10.0),
-            child: new Text(user.name),
+            child: user.name != null ? new Text(user.name) : new Text(""),
           ),
           new Padding(
             padding: new EdgeInsets.only(bottom: 10.0),
-            child: new Text(user.login),
+            child: user.login != null ? Text(user.login) : new Text(""),
           ),
           new Padding(
             padding: new EdgeInsets.only(bottom: 10.0),
-            child: new Text(user.bio),
+            child: user.bio != null ? Text(user.bio) : new Text(""),
           ),
           new Padding(
             padding: new EdgeInsets.only(bottom: 10.0),
-            child: new Text(user.company),
+            child: user.company != null ? Text(user.company) : new Text(""),
           ),
           new Padding(
             padding: new EdgeInsets.only(bottom: 10.0),
-            child: new Text(user.location),
+            child: user.location != null ? new Text(user.location) : new Text(""),
           ),
           new Padding(
             padding: new EdgeInsets.only(bottom: 10.0),
